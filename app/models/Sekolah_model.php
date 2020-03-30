@@ -54,7 +54,6 @@
       $query = "
         SELECT 
           kelas.id_kelas,
-          kondisi_kelas.id_kondisi_kelas
           kondisi_kelas,
           jumlah_meja,
           jumlah_kursi
@@ -68,6 +67,13 @@
         $this->db->query($query);
         $this->db->bind('id', $id_sekolah);
         return $this->db->resultSet();
+
+    }
+
+    public function kelasTambahId() {
+
+      $this->db->query('SELECT id_kelas FROM kelas ORDER BY id_kelas DESC limit 1');
+      return $this->db->single();
 
     }
 
@@ -165,6 +171,18 @@
       $this->db->bind('id', $id_sekolah);
       return $this->db->resultSet();
 
+    }
+
+    public function hapusDataKelas($id_kelas) {
+
+      $query = "DELETE FROM kelas WHERE id_kelas = :id";
+      $this->db->query($query);
+      $this->db->bind('id_kelas', $id_kelas);
+
+      $this->db->execute();
+
+      return $this->db->rowCount();
+      
     }
 
   }

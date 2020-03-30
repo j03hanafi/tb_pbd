@@ -11,6 +11,12 @@
     <a href="#" class="btn btn-outline-warning" role="button" aria-pressed="true" onclick="goBack()">Kembali</a>
   </div>
 
+  <div class="row">
+    <div class="col-lg-6">
+      <?php Flasher::flash(); ?>
+    </div>
+  </div>
+
   <div class="row my-lg-3">
     <div class="col-lg-7">
       <h1>Peta</h1>
@@ -71,7 +77,7 @@
         <!-- no, id_kelas, kondisi, jumlah_meja, jumlah_kursi-->
         <thead class="thead-light">
           <tr>
-            <th scope="col" colspan="5">Kelas</th>
+            <th scope="col" colspan="4">Kelas</th>
             <th scope="col">
               <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#formModalKelas">
                 Tambah Kelas
@@ -82,7 +88,6 @@
         <tbody>
           <tr>
             <th scope="col">No. </th>
-            <th scope="col">ID Kelas</th>
             <th scope="col">Kondisi</th>
             <th scope="col">Jumlah Meja</th>
             <th scope="col">Jumlah Kursi</th>
@@ -94,11 +99,10 @@
           ?>
             <tr>
               <td><?= $nomor; ?></td>
-              <td><?= $kelas['id_kelas']; ?></td>
               <td><?= $kelas['kondisi_kelas']; ?></td>
               <td><?= $kelas['jumlah_meja']; ?></td>
               <td><?= $kelas['jumlah_kursi']; ?></td>
-              <td><a class="btn btn-danger btn-sm" href="#" role="button">Hapus</a></td>
+              <td><a class="btn btn-danger btn-sm" href="<?= BASEURL; ?>/sekolah/hapus/<?= $data['sekolah_umum']['id_sekolah']; ?>/<?= $kelas['id_kelas']; ?>" role="button">Hapus</a></td>
             </tr>
           <?php 
             $nomor++;

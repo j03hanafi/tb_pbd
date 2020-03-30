@@ -3,34 +3,23 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="judulModal">Tambah Data Mahasiswa</h5>
+        <h5 class="modal-title" id="judulModal">Tambah Data Kelas</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="<?= BASEURL; ?>/mahasiswa/tambah" method="post">
+        <form action="<?= BASEURL; ?>/sekolah/tambahKelas" method="post">
           <div class="form-group">
-            <label for="id">Id</label>
-            <input type="text" class="form-control" id="id" name="id" value="<?php $id_add++; echo $id_add; ?>">
+            <label for="id">Id Kelas</label>
+            <input type="text" class="form-control" id="id" name="id" value="<?php $data['sekolah_kelas_tambahId']['id_kelas']++; echo $data['sekolah_kelas_tambahId']['id_kelas']; ?>" readonly>
           </div>
-          <div class="form-group">
-            <label for="nama">Nama</label>
-            <input type="text" class="form-control" id="nama" name="nama" placeholder="John Doe">
-          </div>
-          <div class="form-group">
-            <label for="jurusan">Jurusan</label>
-            <input type="text" class="form-control" id="jurusan" name="jurusan" placeholder="Sistem Informasi">
-          </div>
-          <div class="form-group">
-            <label for="alamat">Alamat</label>
-            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Padang">
-          </div>
+          
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Tambah Data</button>
-      </form>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Tambah Data</button>
+        </form>
       </div>
     </div>
   </div>

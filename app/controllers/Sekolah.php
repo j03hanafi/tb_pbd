@@ -14,6 +14,7 @@
       $data['sekolah_umum'] = $this->model('Sekolah_model')->getSekolahById($id_sekolah);
 
       $data['sekolah_kelas'] = $this->model('Sekolah_model')->getKelas($id_sekolah);
+      $data['sekolah_kelas_tambahId'] = $this->model('Sekolah_model')->kelasTambahId();
 
       $data['sekolah_guru'] = $this->model('Sekolah_model')->getGuru($id_sekolah);
 
@@ -31,7 +32,7 @@
 
       $this->view('templates/header', $data);
       $this->view('sekolah/detail', $data);
-      $this->view('templates/modal');
+      $this->view('templates/modal', $data);
       $this->view('templates/footer');
 
     }
@@ -54,9 +55,18 @@
 
     }
 
-    public function getUbah() {
+    public function hapus($id_sekolah, $id_kelas) {
 
-      echo json_encode($this->model('Sekolah_model')->getSekolahById($_POST['id']));
+      if($this->model('Sekolah_model')->hapusDataKelas($id_kelas) > 0) {
+        Flasher::setFlash('berhasil', 'dihapus', 'success');
+        header('Location: ' . BASEURL . '/sekolah/detail/' . $id_sekolah);
+        exit;
+      }
+      else {
+        Flasher::setFlash('gagal','dihapus','danger');
+        header('Location: ' . BASEURL . '/sekolah/detail/' . $id_sekolah);
+        exit;
+      }
 
     }
 
