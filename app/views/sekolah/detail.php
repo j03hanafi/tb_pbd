@@ -7,7 +7,7 @@
   </div>
 
   <div class="row-cols-lg-1 my-lg-3">
-    <a href="#" class="btn btn-outline-primary active" role="button" aria-pressed="true">Edit</a>
+    <a href="<?= BASEURL; ?>/sekolah/edit/<?= $data['sekolah_umum']['id_sekolah']; ?>" class="btn btn-outline-primary active tampilPageEdit" role="button" aria-pressed="true" data-id="<?= $data['sekolah_umum']['id_sekolah']; ?>">Edit</a>
     <a href="#" class="btn btn-outline-warning" role="button" aria-pressed="true" onclick="goBack()">Kembali</a>
   </div>
 
@@ -72,6 +72,11 @@
         <thead class="thead-light">
           <tr>
             <th scope="col" colspan="5">Kelas</th>
+            <th scope="col">
+              <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#formModalKelas">
+                Tambah Kelas
+              </button> 
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -81,6 +86,7 @@
             <th scope="col">Kondisi</th>
             <th scope="col">Jumlah Meja</th>
             <th scope="col">Jumlah Kursi</th>
+            <th scope="col">Edit</th>
           </tr>
           <?php 
             $nomor = 1;
@@ -92,6 +98,7 @@
               <td><?= $kelas['kondisi_kelas']; ?></td>
               <td><?= $kelas['jumlah_meja']; ?></td>
               <td><?= $kelas['jumlah_kursi']; ?></td>
+              <td><a class="btn btn-danger btn-sm" href="#" role="button">Hapus</a></td>
             </tr>
           <?php 
             $nomor++;
@@ -110,7 +117,7 @@
         <!-- no, id_kelas, kondisi, jumlah_meja, jumlah_kursi-->
         <thead class="thead-light">
           <tr>
-            <th scope="col" colspan="3">Guru</th>
+            <th scope="col" colspan="4">Guru</th>
           </tr>
         </thead>
         <tbody>
@@ -118,6 +125,7 @@
             <th scope="col">No. </th>
             <th scope="col">Golongan</th>
             <th scope="col">Banyak</th>
+            <th scope="col">Edit</th>
           </tr>
           <?php 
             $nomor = 1;
@@ -127,6 +135,11 @@
               <td><?= $nomor; ?></td>
               <td><?= $guru['golongan_guru']; ?></td>
               <td><?= $guru['jumlah_guru_gol']; ?></td>
+              <td>
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#formModalGuru">
+                  Edit Guru
+                </button> 
+              </td>
             </tr>
           <?php 
             $nomor++;
@@ -145,7 +158,7 @@
         <!-- no, id_kelas, kondisi, jumlah_meja, jumlah_kursi-->
         <thead class="thead-light">
           <tr>
-            <th scope="col" colspan="3">Laboratorium</th>
+            <th scope="col" colspan="4">Laboratorium</th>
           </tr>
         </thead>
         <tbody>
@@ -153,6 +166,7 @@
             <th scope="col">No. </th>
             <th scope="col">Nama Laboratorium</th>
             <th scope="col">Jumlah</th>
+            <td scope="col">Edit</td>
           </tr>
           <?php 
             $nomor = 1;
@@ -162,6 +176,11 @@
               <td><?= $nomor; ?></td>
               <td><?= $labor['nama_labor']; ?></td>
               <td><?= $labor['jumlah_labor']; ?></td>
+              <td>
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#formModalLabor">
+                  Edit Labor
+                </button> 
+              </td>
             </tr>
           <?php 
             $nomor++;
@@ -180,7 +199,7 @@
         <!-- no, id_kelas, kondisi, jumlah_meja, jumlah_kursi-->
         <thead class="thead-light">
           <tr>
-            <th scope="col" colspan="5">Alat</th>
+            <th scope="col" colspan="6">Alat</th>
           </tr>
         </thead>
         <tbody>
@@ -190,6 +209,7 @@
             <th scope="col">Nama Alat</th>
             <th scope="col">Jumlah Alat Baik</th>
             <th scope="col">Jumlah Alat Kurang Baik</th>
+            <th scope="col">Edit</th>
           </tr>
           <?php 
             $nomor = 1;
@@ -201,6 +221,11 @@
               <td><?= $alat['nama_alat']; ?></td>
               <td><?= $alat['kondisi_alat_baik']; ?></td>
               <td><?= $alat['kondisi_alat_buruk']; ?></td>
+              <td>
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#formModalAlat">
+                  Edit Alat
+                </button> 
+              </td>
             </tr>
           <?php 
             $nomor++;

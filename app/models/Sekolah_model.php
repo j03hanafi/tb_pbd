@@ -54,6 +54,7 @@
       $query = "
         SELECT 
           kelas.id_kelas,
+          kondisi_kelas.id_kondisi_kelas
           kondisi_kelas,
           jumlah_meja,
           jumlah_kursi

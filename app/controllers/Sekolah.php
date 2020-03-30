@@ -31,7 +31,32 @@
 
       $this->view('templates/header', $data);
       $this->view('sekolah/detail', $data);
+      $this->view('templates/modal');
       $this->view('templates/footer');
+
+    }
+
+    public function edit($id_sekolah) {
+
+      $data['sekolah_umum'] = $this->model('Sekolah_model')->getSekolahById($id_sekolah);
+
+      $data['sekolah_kelas'] = $this->model('Sekolah_model')->getKelas($id_sekolah);
+
+      $data['title'] = 'Edit Data Sekolah';
+
+      $data['header_status'] = $this->model('Header_model')->getStatus();
+      $data['header_akreditasi'] = $this->model('Header_model')->getAkreditasi();
+      $data['header_kurikulum'] = $this->model('Header_model')->getKurikulum();
+
+      $this->view('templates/header', $data);
+      $this->view('sekolah/edit', $data);
+      $this->view('templates/footer');
+
+    }
+
+    public function getUbah() {
+
+      echo json_encode($this->model('Sekolah_model')->getSekolahById($_POST['id']));
 
     }
 
