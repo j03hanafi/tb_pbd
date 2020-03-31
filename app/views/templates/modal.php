@@ -9,12 +9,28 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="<?= BASEURL; ?>/sekolah/tambahKelas" method="post">
+        <form action="<?= BASEURL; ?>/sekolah/tambahKelas/<?= $data['sekolah_umum']['id_sekolah'] ?>" method="post">
           <div class="form-group">
             <label for="id">Id Kelas</label>
             <input type="text" class="form-control" id="id" name="id" value="<?php $data['sekolah_kelas_tambahId']['id_kelas']++; echo $data['sekolah_kelas_tambahId']['id_kelas']; ?>" readonly>
           </div>
-          
+          <div class="form-group">
+            <label for="kondisiKelas">Kondisi Kelas</label>
+            <select class="form-control" id="kondisiKelas" name="kondisiKelas">
+              <option value="KK0001">Baik</option>
+              <option value="KK0002">Rusak Ringan</option>
+              <option value="KK0003">Rusak Sedang</option>
+              <option value="KK0004">Rusak Berat</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="meja">Jumlah Meja</label>
+            <input type="number" class="form-control" id="meja" name="meja">
+          </div>
+          <div class="form-group">
+            <label for="kursi">Jumlah Kursi</label>
+            <input type="number" class="form-control" id="kursi" name="kursi">
+          </div>
       </div>
       <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

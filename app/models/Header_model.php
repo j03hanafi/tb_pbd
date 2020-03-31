@@ -33,5 +33,12 @@
 
     }
 
+    public function getKecamatan() {
+
+      $query = "SELECT * FROM kecamatan";
+      $this->db->query($query);
+      return $this->db->resultSet();
+
+    }
 
   }

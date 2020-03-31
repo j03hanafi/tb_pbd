@@ -77,6 +77,28 @@
 
     }
 
+    public function tambahDataKelas($data, $id_sekolah) {
+
+      $query = "update sekolah set jumlah_kelas = jumlah_kelas+1 WHERE id_sekolah = :id";
+
+      $this->db->query($query);
+      $this->db->bind('id', $id_sekolah);
+      $this->db->execute();
+
+      $query = "INSERT INTO kelas VALUES (:id_kelas, :id_sekolah, :id_kondisi, :jumlah_meja, :jumlah_kursi)";
+
+      $this->db->query($query);
+      $this->db->bind('id_kelas', $data['id']);
+      $this->db->bind('id_sekolah', $id_sekolah);
+      $this->db->bind('id_kondisi', $data['kondisiKelas']);
+      $this->db->bind('jumlah_meja', $data['meja']);
+      $this->db->bind('jumlah_kursi', $data['kursi']);
+
+      $this->db->execute();
+
+      return $this->db->rowCount();
+    }
+
     public function getLabor($id_sekolah) {
 
       $query = "
@@ -173,11 +195,17 @@
 
     }
 
-    public function hapusDataKelas($id_kelas) {
+    public function hapusDataKelas($id_kelas, $id_sekolah) {
+
+      $query = "update sekolah set jumlah_kelas = jumlah_kelas-1 WHERE id_sekolah = :id";
+
+      $this->db->query($query);
+      $this->db->bind('id', $id_sekolah);
+      $this->db->execute();
 
       $query = "DELETE FROM kelas WHERE id_kelas = :id";
       $this->db->query($query);
-      $this->db->bind('id_kelas', $id_kelas);
+      $this->db->bind('id', $id_kelas);
 
       $this->db->execute();
 

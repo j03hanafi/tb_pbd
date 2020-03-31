@@ -29,8 +29,10 @@
       $data['header_status'] = $this->model('Header_model')->getStatus();
       $data['header_akreditasi'] = $this->model('Header_model')->getAkreditasi();
       $data['header_kurikulum'] = $this->model('Header_model')->getKurikulum();
+      $data['header_kecamatan'] = $this->model('Header_model')->getKecamatan();
 
       $this->view('templates/header', $data);
+      $this->view('templates/map', $data);
       $this->view('sekolah/detail', $data);
       $this->view('templates/modal', $data);
       $this->view('templates/footer');
@@ -48,6 +50,7 @@
       $data['header_status'] = $this->model('Header_model')->getStatus();
       $data['header_akreditasi'] = $this->model('Header_model')->getAkreditasi();
       $data['header_kurikulum'] = $this->model('Header_model')->getKurikulum();
+      $data['header_kecamatan'] = $this->model('Header_model')->getKecamatan();
 
       $this->view('templates/header', $data);
       $this->view('sekolah/edit', $data);
@@ -55,9 +58,24 @@
 
     }
 
+    public function tambahKelas($id_sekolah) {
+
+      if($this->model('Sekolah_model')->tambahDataKelas($_POST, $id_sekolah) > 0) {
+        Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+        header('Location: '. BASEURL .'/sekolah/detail/' . $id_sekolah);
+        exit;
+      }
+      else {
+        Flasher::setFlash('gagal', 'ditambahkan', 'dagner');
+        header('Location: '. BASEURL .'/sekolah/detail/' . $id_sekolah);
+        exit;
+      }
+
+    }
+
     public function hapus($id_sekolah, $id_kelas) {
 
-      if($this->model('Sekolah_model')->hapusDataKelas($id_kelas) > 0) {
+      if($this->model('Sekolah_model')->hapusDataKelas($id_kelas, $id_sekolah) > 0) {
         Flasher::setFlash('berhasil', 'dihapus', 'success');
         header('Location: ' . BASEURL . '/sekolah/detail/' . $id_sekolah);
         exit;
